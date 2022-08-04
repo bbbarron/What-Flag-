@@ -9,6 +9,17 @@
 
 import SwiftUI
 
+struct FlagImage: View {
+    let name: String
+    
+    var body: some View {
+        Image( name)
+            .renderingMode(.original)
+            .clipShape(Capsule())
+            .shadow(color: .black, radius: 5)
+    }
+}
+
 struct ContentView: View {
     @State private var showingScore = false
     @State private var scoreTitle = ""
@@ -38,10 +49,7 @@ struct ContentView: View {
                     Button {
                         flagTapped(number)
                     } label: {
-                        Image(countries[number])
-                            .renderingMode(.original)
-                            .clipShape(Capsule())
-                            .shadow(color: .black, radius: 5)
+                        FlagImage(name: countries[number])
                     }
                    
                     }
